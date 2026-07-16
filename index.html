@@ -894,6 +894,110 @@
       color: rgba(26, 29, 26, 0.75);
     }
 
+    /* ============ FINAL CTA ============ */
+    .final-cta {
+      background: #fff;
+      padding: 0 24px 28px;
+    }
+
+    .final-cta-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background:
+        radial-gradient(900px 500px at 15% -20%, rgba(185, 230, 60, 0.12), transparent 60%),
+        radial-gradient(800px 450px at 90% 120%, rgba(245, 242, 234, 0.08), transparent 55%),
+        var(--deep-green);
+      border-radius: 24px;
+      padding: 110px 40px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .final-cta h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.2vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #fff;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .final-cta .sub {
+      margin: 20px auto 0;
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 520px;
+    }
+
+    .final-cta-actions {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .final-cta .whatsapp-link { color: #fff; }
+    .final-cta .whatsapp-link:hover { border-color: var(--lime); }
+    .final-cta .green-dot {
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(185, 230, 60, 0.2);
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--deep-green);
+      color: #fff;
+      margin-top: 28px;
+      padding: 64px 40px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .footer .logo { color: #fff; }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.18s ease;
+    }
+
+    .footer-links a:hover { color: var(--lime); }
+
+    .footer-legal {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 880px;
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 960px) {
       .nav-links a:not(.btn) { display: none; }
@@ -904,6 +1008,10 @@
       }
       .hero-copy { max-width: 100%; }
       .nav-inner { padding: 0 24px; }
+      .final-cta { padding: 0 16px 20px; }
+      .final-cta-card { padding: 72px 24px; border-radius: 18px; }
+      .footer { padding: 48px 24px 40px; margin-top: 20px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
       .keep { padding: 8px 24px 72px; }
       .keep-cards { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
       .keep-media { height: 200px; }
@@ -1444,6 +1552,42 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta" id="quote">
+    <div class="final-cta-card">
+      <h2>Move your money the right way.</h2>
+      <p class="sub">Speak to us and get a transparent quote in one conversation.</p>
+      <div class="final-cta-actions">
+        <a class="btn btn-lime" href="https://wa.me/" target="_blank" rel="noopener">Get a Quote</a>
+        <a class="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
+          <span class="green-dot" aria-hidden="true"></span>
+          Message us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a class="logo" href="#">Barrel</a>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#what-we-do">What we do</a>
+          <a href="#who-its-for">Who it&rsquo;s for</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#quote">Get a Quote</a>
+        </nav>
+      </div>
+      <p class="footer-legal">
+        Barrel Technologies. [Entity registration &amp; licensing line to confirm.]
+        Figures cited reflect industry data on cross-border payments and are
+        provided for context. Barrel is a service for moving foreign currency;
+        it is not a bank.
+      </p>
+    </div>
+  </footer>
 
   <script>
     (function () {
