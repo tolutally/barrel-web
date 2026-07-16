@@ -593,8 +593,18 @@
         var(--paper);
       border-radius: 24px;
       padding: 88px 64px 84px;
-      text-align: center;
     }
+
+    /* stats column left, headline block right — like the reference */
+    .shift-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+
+    .shift-stats-col { grid-column: 1; grid-row: 1; }
+    .shift-head { grid-column: 2; grid-row: 1; }
 
     .shift .eyebrow {
       display: block;
@@ -606,34 +616,44 @@
     }
 
     .shift h2 {
-      margin: 18px auto 0;
+      margin-top: 18px;
       font-family: "Fraunces", Georgia, serif;
       font-weight: 500;
-      font-size: clamp(32px, 3.8vw, 52px);
-      line-height: 1.12;
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.1;
       letter-spacing: -0.01em;
       color: var(--ink);
-      max-width: 720px;
+      max-width: 560px;
     }
 
-    .shift-stats {
-      margin: 72px auto 0;
-      max-width: 1080px;
+    .shift-head .lead {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 500;
+      color: rgba(26, 29, 26, 0.85);
+      max-width: 500px;
+    }
+
+    .stats-row {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 48px;
     }
 
     .stat {
       text-align: left;
-      border-left: 1.5px solid rgba(26, 29, 26, 0.18);
-      padding-left: 28px;
+      border-left: 1.5px solid rgba(26, 29, 26, 0.22);
+      padding-left: 26px;
     }
+
+    .stat + .stats-bottom,
+    .stats-bottom { margin-top: 64px; }
 
     .stat-number {
       font-family: "Fraunces", Georgia, serif;
       font-weight: 500;
-      font-size: clamp(56px, 6vw, 84px);
+      font-size: clamp(52px, 5.2vw, 78px);
       line-height: 1;
       letter-spacing: -0.02em;
       display: block;
@@ -645,18 +665,23 @@
     .stat-ink .stat-number { color: var(--ink); }
 
     .stat-label {
-      margin-top: 16px;
-      font-size: 15.5px;
-      line-height: 1.55;
-      color: rgba(26, 29, 26, 0.72);
+      margin-top: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--ink);
       max-width: 300px;
     }
 
+    /* big bold closing statement, bottom-left like the reference */
     .shift-closing {
-      margin-top: 72px;
-      font-size: clamp(19px, 2vw, 24px);
+      margin-top: 88px;
+      font-size: clamp(32px, 3.6vw, 48px);
       font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
       color: var(--ink);
+      max-width: 640px;
     }
 
     /* fade-up on scroll into view */
@@ -687,9 +712,12 @@
       .nav-inner { padding: 0 24px; }
       .shift { padding: 0 16px 20px; }
       .shift-card { padding: 56px 24px 56px; border-radius: 18px; }
-      .shift-stats { grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
+      .shift-grid { grid-template-columns: 1fr; gap: 48px; }
+      .shift-stats-col, .shift-head { grid-column: auto; grid-row: auto; }
+      .stats-row { grid-template-columns: 1fr; gap: 36px; }
+      .stats-bottom { margin-top: 36px; }
       .stat-label { max-width: none; }
-      .shift-closing { margin-top: 52px; }
+      .shift-closing { margin-top: 56px; }
       .who { padding: 0 16px 20px; }
       .who-card { padding: 56px 24px 52px; border-radius: 18px; }
       .who-blocks { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
@@ -1033,23 +1061,32 @@
   <!-- ============ THE SHIFT ============ -->
   <section class="shift">
     <div class="shift-card">
-      <span class="eyebrow">The Shift</span>
-      <h2>Cross-border payments are broken for growing businesses.</h2>
-
-      <div class="shift-stats">
-        <div class="stat stat-green reveal">
-          <span class="stat-number" data-count="8" data-suffix="%">8%</span>
-          <p class="stat-label">lost on the average cross-border transaction, more than double the global benchmark</p>
+      <div class="shift-grid">
+        <div class="shift-head">
+          <span class="eyebrow">The Shift</span>
+          <h2>Cross-border payments are broken for growing businesses.</h2>
+          <p class="lead">Fees stack up, settlement drags on, and the market keeps growing anyway. The infrastructure hasn&rsquo;t caught up &mdash; that&rsquo;s the shift Barrel is built for.</p>
         </div>
 
-        <div class="stat stat-copper reveal">
-          <span class="stat-number">Days</span>
-          <p class="stat-label">of settlement delay while deals stall and cash sits frozen</p>
-        </div>
+        <div class="shift-stats-col">
+          <div class="stats-row">
+            <div class="stat stat-green reveal">
+              <span class="stat-number" data-count="8" data-suffix="%">8%</span>
+              <p class="stat-label">lost on the average cross-border transaction, more than double the global benchmark</p>
+            </div>
 
-        <div class="stat stat-ink reveal">
-          <span class="stat-number" data-count="300" data-prefix="$" data-suffix="B+">$300B+</span>
-          <p class="stat-label">in projected cross-border B2B volume by 2033, a market moving without the right infrastructure</p>
+            <div class="stat stat-copper reveal">
+              <span class="stat-number">Days</span>
+              <p class="stat-label">of settlement delay while deals stall and cash sits frozen</p>
+            </div>
+          </div>
+
+          <div class="stats-bottom">
+            <div class="stat stat-ink reveal">
+              <span class="stat-number" data-count="300" data-prefix="$" data-suffix="B+">$300B+</span>
+              <p class="stat-label">in projected cross-border B2B volume by 2033, a market moving without the right infrastructure</p>
+            </div>
+          </div>
         </div>
       </div>
 
