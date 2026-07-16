@@ -7,6 +7,9 @@ Until they exist, the cards show a neutral hatched slot instead of a broken imag
 |---|---|---|
 | `import-trade.jpg` | Importing & paying out (ink card) | A real photo with a person: warehouse receiving, checking inbound boxes/pallets, inspecting a shipment with a laptop or clipboard. |
 | `export-trade.jpg` | Exporting & getting paid (lime card) | A real photo with a person: packing/labeling goods for shipment, forklift or dock worker at a container yard or port. |
+| `keep-workflow.jpg` | Keep your workflow (No trade-offs) | A person or team working comfortably in their usual setup — laptop at a desk, familiar tools. |
+| `keep-banking.jpg` | Keep your banking (No trade-offs) | A person handling everyday business finances — reviewing statements, at a bank counter, card and laptop. |
+| `keep-control.jpg` | Keep your control (No trade-offs) | A person confidently reviewing numbers — checking a transaction on a phone, signing off paperwork. |
 
 Guidelines:
 - Real photography only (e.g. Unsplash or Pexels free licenses) — no AI-generated imagery.
