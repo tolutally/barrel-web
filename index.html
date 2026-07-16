@@ -700,6 +700,108 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
+    /* ============ HOW IT WORKS ============ */
+    .how {
+      background: #fff;
+      padding: 96px 40px 110px;
+    }
+
+    .how-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 88px;
+      align-items: start;
+    }
+
+    .how .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .how h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(36px, 4.2vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .how h2 .muted-line {
+      display: block;
+      color: var(--copper);
+    }
+
+    .how .lead {
+      margin-top: 26px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(26, 29, 26, 0.8);
+      max-width: 520px;
+    }
+
+    .how-art {
+      margin-top: 56px;
+      max-width: 440px;
+    }
+
+    .how-art svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* numbered accordion (steps) */
+    .steps .accordion-item {
+      border-bottom: 1px solid rgba(26, 29, 26, 0.16);
+    }
+
+    .steps .accordion-item:first-child {
+      border-top: 1px solid rgba(26, 29, 26, 0.16);
+    }
+
+    .steps .accordion-trigger {
+      color: var(--ink);
+      padding: 30px 4px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(26, 29, 26, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .steps .accordion-trigger:hover .step-num {
+      background: rgba(26, 29, 26, 0.12);
+    }
+
+    .steps .accordion-item.open .step-num {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .steps .accordion-panel p {
+      color: rgba(26, 29, 26, 0.75);
+      padding: 0 56px 30px 4px;
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 960px) {
       .nav-links a:not(.btn) { display: none; }
@@ -710,6 +812,10 @@
       }
       .hero-copy { max-width: 100%; }
       .nav-inner { padding: 0 24px; }
+      .how { padding: 64px 24px 72px; }
+      .how-inner { grid-template-columns: 1fr; gap: 52px; }
+      .how-art { margin-top: 40px; }
+      .steps .accordion-panel p { padding-right: 12px; }
       .shift { padding: 0 16px 20px; }
       .shift-card { padding: 56px 24px 56px; border-radius: 18px; }
       .shift-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -880,7 +986,7 @@
   </section>
 
   <!-- ============ FX CONCIERGE OF RECORD (trust engine) ============ -->
-  <section class="concierge" id="how-it-works">
+  <section class="concierge" id="fx-concierge">
     <div class="concierge-card">
       <div class="concierge-head">
         <span class="eyebrow">What&rsquo;s an FX Concierge of Record?</span>
@@ -1094,6 +1200,113 @@
     </div>
   </section>
 
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how" id="how-it-works">
+    <div class="how-inner">
+      <div class="how-copy">
+        <span class="eyebrow">How it works</span>
+        <h2>
+          <span class="muted-line">Live in one conversation.</span>
+          Three steps. No guesswork.
+        </h2>
+        <p class="lead">
+          Not an app. Not a middleman who goes quiet when something goes wrong.
+          A real concierge who takes care of the whole transaction, with a full
+          paper trail and someone you can always reach.
+        </p>
+
+        <div class="how-art" aria-hidden="true">
+          <!-- chat conversation driving a settlement, isometric-ish -->
+          <svg viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- dotted route from chat to platform -->
+            <path d="M118 96 Q 200 120 250 170" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+            <path d="M330 96 Q 300 130 280 162" stroke="#2F4A2E" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+
+            <!-- chat bubble: request -->
+            <g>
+              <rect x="28" y="40" width="150" height="56" rx="14" fill="#F5F2EA" stroke="#1A1D1A" stroke-opacity="0.2"/>
+              <path d="M52 96 L 60 110 L 68 96 Z" fill="#F5F2EA"/>
+              <circle cx="52" cy="68" r="9" fill="#2F4A2E"/>
+              <path d="M48.5 68 L 51 70.5 L 55.5 65.5" stroke="#B9E63C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M70 63 H 156 M70 74 H 132" stroke="#1A1D1A" stroke-opacity="0.45" stroke-width="3.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- chat bubble: quoted rate -->
+            <g>
+              <rect x="262" y="34" width="140" height="52" rx="14" fill="#B9E63C"/>
+              <path d="M370 86 L 378 100 L 386 86 Z" fill="#B9E63C"/>
+              <text x="284" y="66" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#1A1D1A">1 USD = 0.92&#8364;</text>
+            </g>
+
+            <!-- settlement platform -->
+            <g>
+              <path d="M265 170 L 355 215 L 265 260 L 175 215 Z" fill="#1A1D1A"/>
+              <path d="M175 215 L 175 236 L 265 281 L 265 260 Z" fill="#2F4A2E"/>
+              <path d="M355 215 L 355 236 L 265 281 L 265 260 Z" fill="#141714"/>
+              <path d="M265 182 L 331 215 L 265 248 L 199 215 Z" stroke="#B9E63C" stroke-opacity="0.35" fill="none"/>
+              <circle cx="310" cy="232" r="3.5" fill="#B9E63C"/>
+              <circle cx="322" cy="226" r="3.5" fill="#B9E63C" opacity="0.5"/>
+            </g>
+
+            <!-- barrel token on platform -->
+            <g>
+              <path d="M243 150 C 243 143 252 138 265 138 C 278 138 287 143 287 150 L 287 196 C 287 203 278 208 265 208 C 252 208 243 203 243 196 Z" fill="#B87A4B"/>
+              <ellipse cx="265" cy="150" rx="22" ry="8.5" fill="#D9995F"/>
+              <path d="M241 166 C 247 171 283 171 289 166 M241 184 C 247 189 283 189 289 184" stroke="#1A1D1A" stroke-opacity="0.35" stroke-width="3" fill="none"/>
+            </g>
+
+            <!-- proof receipt -->
+            <g>
+              <rect x="60" y="196" width="84" height="104" rx="8" fill="#fff" stroke="#1A1D1A" stroke-opacity="0.2"/>
+              <path d="M74 218 H 130 M74 236 H 118 M74 254 H 126" stroke="#1A1D1A" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="86" cy="278" r="10" fill="#2F4A2E"/>
+              <path d="M81.5 278 L 85 281.5 L 91 274.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M144 248 Q 170 240 186 224" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="accordion steps">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true">
+            Tell us what you need
+            <span class="step-num" aria-hidden="true">1</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>The amount, the currencies, the transaction. A message is enough to start.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            We confirm your rate
+            <span class="step-num" aria-hidden="true">2</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Transparent and all-in, before you commit. What we quote is what you pay.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            We settle it
+            <span class="step-num" aria-hidden="true">3</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Sourcing, conversion, settlement &mdash; and proof once it&rsquo;s done. Confirmation, not excuses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script>
     (function () {
       var el = document.getElementById("cycleWord");
@@ -1184,21 +1397,24 @@
       });
     })();
 
-    // Accordion: one open at a time, one-click expand, "+" rotates to lime "x"
+    // Accordions: one open at a time per accordion, one-click expand
     (function () {
-      var items = Array.prototype.slice.call(document.querySelectorAll(".accordion-item"));
-      items.forEach(function (item) {
-        var trigger = item.querySelector(".accordion-trigger");
-        trigger.addEventListener("click", function () {
-          var isOpen = item.classList.contains("open");
-          items.forEach(function (other) {
-            other.classList.remove("open");
-            other.querySelector(".accordion-trigger").setAttribute("aria-expanded", "false");
+      var accordions = Array.prototype.slice.call(document.querySelectorAll(".accordion"));
+      accordions.forEach(function (acc) {
+        var items = Array.prototype.slice.call(acc.querySelectorAll(".accordion-item"));
+        items.forEach(function (item) {
+          var trigger = item.querySelector(".accordion-trigger");
+          trigger.addEventListener("click", function () {
+            var isOpen = item.classList.contains("open");
+            items.forEach(function (other) {
+              other.classList.remove("open");
+              other.querySelector(".accordion-trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("open");
+              trigger.setAttribute("aria-expanded", "true");
+            }
           });
-          if (!isOpen) {
-            item.classList.add("open");
-            trigger.setAttribute("aria-expanded", "true");
-          }
         });
       });
     })();
