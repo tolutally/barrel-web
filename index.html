@@ -243,6 +243,49 @@
       }
     }
 
+    /* ============ VALUE ADDS ============ */
+    .value-adds {
+      background: #fff;
+      padding: 96px 0 110px;
+    }
+
+    .value-adds-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 64px;
+    }
+
+    .value-card .card-icon {
+      height: 52px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .value-card .card-icon svg {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .value-card h3 {
+      margin-top: 18px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .value-card p {
+      margin-top: 14px;
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: rgba(26, 29, 26, 0.78);
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 960px) {
       .nav-links a:not(.btn) { display: none; }
@@ -253,6 +296,12 @@
       }
       .hero-copy { max-width: 100%; }
       .nav-inner { padding: 0 24px; }
+      .value-adds { padding: 72px 0 80px; }
+      .value-adds-inner {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 48px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -396,6 +445,68 @@
           </defs>
         </svg>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUE ADDS ============ -->
+  <section class="value-adds" id="what-we-do">
+    <div class="value-adds-inner">
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- 2x2 tile cluster: licensed corridors -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M6 10 L 9 13 L 14 7" stroke="#B9E63C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="24" y="0" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M29 10 H 39 M34 5 V 15" stroke="#F5F2EA" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="0" y="24" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <circle cx="10" cy="34" r="4.5" stroke="#F5F2EA" stroke-width="2.2"/>
+            <rect x="24" y="24" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M30 34 L 38 34 M35 30 L 38 34 L 35 38" stroke="#F5F2EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Licensed rails, everywhere you trade</h3>
+        <p>Move money through regulated partners and licensed corridors &mdash; compliance is built in before a single dollar moves.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- four check circles on a dashed frame: transparent coverage -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="9" width="26" height="26" rx="4" stroke="#1A1D1A" stroke-width="1.4" stroke-dasharray="3 4"/>
+            <circle cx="9" cy="9" r="8" fill="#1A1D1A"/>
+            <path d="M5.5 9 L 8 11.5 L 12.5 6.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="9" r="8" fill="#1A1D1A"/>
+            <path d="M31.5 9 L 34 11.5 L 38.5 6.5" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="35" r="8" fill="#1A1D1A"/>
+            <path d="M5.5 35 L 8 37.5 L 12.5 32.5" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="35" r="8" fill="#1A1D1A"/>
+            <path d="M31.5 35 L 34 37.5 L 38.5 32.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Transparent rates, no buried spread</h3>
+        <p>You see the mid-market rate and our fee before you commit. No hidden spread, no surprise deductions at settlement.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- stacked blocks + gear: concierge handles the machinery -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="2" width="9" height="9" rx="2" fill="#1A1D1A"/>
+            <rect x="0" y="17" width="9" height="9" rx="2" fill="#1A1D1A" opacity="0.55"/>
+            <rect x="0" y="32" width="9" height="9" rx="2" fill="#1A1D1A"/>
+            <path d="M9 6.5 H 17 V 36.5 H 9 M17 21.5 H 24" stroke="#1A1D1A" stroke-width="1.6"/>
+            <g>
+              <circle cx="36" cy="21.5" r="7" stroke="#1A1D1A" stroke-width="3.4"/>
+              <path d="M36 9.5 V 13 M36 30 V 33.5 M24 21.5 H 27.5 M44.5 21.5 H 48 M27.6 13.1 L 30 15.5 M42 27.5 L 44.4 29.9 M44.4 13.1 L 42 15.5 M30 27.5 L 27.6 29.9" stroke="#1A1D1A" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Concierge service, done for you</h3>
+        <p>Tell us what to move and where. We source liquidity, settle, and confirm &mdash; over WhatsApp or wherever you work.</p>
+      </div>
+
     </div>
   </section>
 
