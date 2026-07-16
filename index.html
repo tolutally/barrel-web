@@ -579,6 +579,102 @@
       .who-block:hover { transform: none; }
     }
 
+    /* ============ THE SHIFT (stats) ============ */
+    .shift {
+      background: #fff;
+      padding: 0 24px 28px;
+    }
+
+    .shift-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background:
+        radial-gradient(800px 400px at 50% 120%, rgba(184, 122, 75, 0.08), transparent 60%),
+        var(--paper);
+      border-radius: 24px;
+      padding: 88px 64px 84px;
+      text-align: center;
+    }
+
+    .shift .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .shift h2 {
+      margin: 18px auto 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.8vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 720px;
+    }
+
+    .shift-stats {
+      margin: 72px auto 0;
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 48px;
+    }
+
+    .stat {
+      text-align: left;
+      border-left: 1.5px solid rgba(26, 29, 26, 0.18);
+      padding-left: 28px;
+    }
+
+    .stat-number {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(56px, 6vw, 84px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-green .stat-number { color: var(--deep-green); }
+    .stat-copper .stat-number { color: var(--copper); }
+    .stat-ink .stat-number { color: var(--ink); }
+
+    .stat-label {
+      margin-top: 16px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: rgba(26, 29, 26, 0.72);
+      max-width: 300px;
+    }
+
+    .shift-closing {
+      margin-top: 72px;
+      font-size: clamp(19px, 2vw, 24px);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* fade-up on scroll into view */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
     /* ============ RESPONSIVE ============ */
     @media (max-width: 960px) {
       .nav-links a:not(.btn) { display: none; }
@@ -589,6 +685,11 @@
       }
       .hero-copy { max-width: 100%; }
       .nav-inner { padding: 0 24px; }
+      .shift { padding: 0 16px 20px; }
+      .shift-card { padding: 56px 24px 56px; border-radius: 18px; }
+      .shift-stats { grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
+      .stat-label { max-width: none; }
+      .shift-closing { margin-top: 52px; }
       .who { padding: 0 16px 20px; }
       .who-card { padding: 56px 24px 52px; border-radius: 18px; }
       .who-blocks { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
@@ -929,6 +1030,33 @@
     </div>
   </section>
 
+  <!-- ============ THE SHIFT ============ -->
+  <section class="shift">
+    <div class="shift-card">
+      <span class="eyebrow">The Shift</span>
+      <h2>Cross-border payments are broken for growing businesses.</h2>
+
+      <div class="shift-stats">
+        <div class="stat stat-green reveal">
+          <span class="stat-number" data-count="8" data-suffix="%">8%</span>
+          <p class="stat-label">lost on the average cross-border transaction, more than double the global benchmark</p>
+        </div>
+
+        <div class="stat stat-copper reveal">
+          <span class="stat-number">Days</span>
+          <p class="stat-label">of settlement delay while deals stall and cash sits frozen</p>
+        </div>
+
+        <div class="stat stat-ink reveal">
+          <span class="stat-number" data-count="300" data-prefix="$" data-suffix="B+">$300B+</span>
+          <p class="stat-label">in projected cross-border B2B volume by 2033, a market moving without the right infrastructure</p>
+        </div>
+      </div>
+
+      <p class="shift-closing reveal">Barrel exists to fix that.</p>
+    </div>
+  </section>
+
   <script>
     (function () {
       var el = document.getElementById("cycleWord");
@@ -975,6 +1103,48 @@
       }
 
       setTimeout(tick, PAUSE_MS);
+    })();
+
+    // The Shift: fade-up reveal + count-up when the stats scroll into view
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+      if (reduced || !("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+
+      function countUp(el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var prefix = el.getAttribute("data-prefix") || "";
+        var suffix = el.getAttribute("data-suffix") || "";
+        var duration = 1200;
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = prefix + Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add("in");
+          var num = el.querySelector("[data-count]");
+          if (num) countUp(num);
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.35 });
+
+      reveals.forEach(function (el, i) {
+        el.style.transitionDelay = (i % 3) * 90 + "ms";
+        observer.observe(el);
+      });
     })();
 
     // Accordion: one open at a time, one-click expand, "+" rotates to lime "x"
