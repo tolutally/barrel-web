@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barrel — Transact globally. Kill your bank fees.</title>
+  <meta name="description" content="FX Concierge of Record infrastructure that sources, settles, and handles your cross-border payments — licensed, transparent, done for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F5F2EA;
+      --ink: #1A1D1A;
+      --lime: #B9E63C;
+      --deep-green: #2F4A2E;
+      --copper: #B87A4B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 242, 234, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26, 29, 26, 0.06);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 15.5px;
+      font-weight: 500;
+      transition: opacity 0.18s ease;
+    }
+
+    .nav-links a:hover { opacity: 0.6; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 15px 26px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-lime {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .btn-lime:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(185, 230, 60, 0.45);
+    }
+
+    .nav .btn { padding: 13px 22px; }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 600px at 8% -10%, rgba(47, 74, 46, 0.14), transparent 60%),
+        radial-gradient(900px 550px at 55% 0%, rgba(185, 230, 60, 0.10), transparent 55%),
+        linear-gradient(180deg, var(--paper) 0%, #FBFAF6 62%, #ffffff 100%);
+    }
+
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 96px 40px 120px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero-copy { max-width: 620px; }
+
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(44px, 5.6vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .hero h1 .line { display: block; }
+
+    .cycle-wrap { white-space: nowrap; }
+
+    .cycle-word { color: var(--deep-green); }
+
+    .cursor {
+      display: inline-block;
+      width: 0.09em;
+      height: 0.92em;
+      margin-left: 0.06em;
+      background: var(--lime);
+      vertical-align: -0.08em;
+      border-radius: 1px;
+      animation: blink 1.05s steps(1, end) infinite;
+    }
+
+    @keyframes blink {
+      0%, 55% { opacity: 1; }
+      56%, 100% { opacity: 0; }
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: 18.5px;
+      line-height: 1.6;
+      color: rgba(26, 29, 26, 0.78);
+      max-width: 540px;
+    }
+
+    .micro-strip {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--copper);
+    }
+
+    .micro-strip .dot-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--copper);
+      opacity: 0.65;
+    }
+
+    .hero-ctas {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 15.5px;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.18s ease;
+    }
+
+    .whatsapp-link:hover { border-color: var(--deep-green); }
+
+    .green-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--deep-green);
+      box-shadow: 0 0 0 3px rgba(47, 74, 46, 0.15);
+      flex-shrink: 0;
+    }
+
+    /* ============ HERO ART ============ */
+    .hero-art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hero-art svg {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .float-a { animation: floaty 6s ease-in-out infinite; }
+      .float-b { animation: floaty 7.5s ease-in-out 0.8s infinite; }
+      .float-c { animation: floaty 6.8s ease-in-out 1.6s infinite; }
+      @keyframes floaty {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-9px); }
+      }
+    }
+
+    /* ============ FX CONCIERGE (trust engine) ============ */
+    .concierge {
+      background: #fff;
+      padding: 28px 24px 0;
+    }
+
+    .concierge-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background:
+        radial-gradient(900px 500px at 85% 110%, rgba(185, 230, 60, 0.10), transparent 60%),
+        radial-gradient(800px 450px at 10% -10%, rgba(245, 242, 234, 0.07), transparent 55%),
+        var(--deep-green);
+      border-radius: 24px;
+      padding: 88px 40px 96px;
+      color: #fff;
+    }
+
+    .concierge-head {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .concierge .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .concierge h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.8vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .concierge .lead {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .accordion {
+      max-width: 880px;
+      margin: 64px auto 0;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .accordion-item:first-child {
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 26px 4px;
+      text-align: left;
+      font-family: inherit;
+      color: #fff;
+      font-size: clamp(19px, 2vw, 24px);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .accordion-trigger:hover .acc-icon {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .acc-icon {
+      position: relative;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.09);
+      transition: background 0.25s ease, transform 0.35s ease;
+    }
+
+    .acc-icon::before,
+    .acc-icon::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #fff;
+      border-radius: 1px;
+      transition: background 0.25s ease, transform 0.35s ease;
+    }
+
+    .acc-icon::before {
+      width: 16px;
+      height: 2px;
+      transform: translate(-50%, -50%);
+    }
+
+    .acc-icon::after {
+      width: 2px;
+      height: 16px;
+      transform: translate(-50%, -50%);
+    }
+
+    /* "+" strokes rotate 45deg into "x", turn lime; box stays square */
+    .accordion-item.open .acc-icon {
+      background: rgba(185, 230, 60, 0.14);
+    }
+
+    .accordion-item.open .acc-icon::before,
+    .accordion-item.open .acc-icon::after {
+      background: var(--lime);
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .accordion-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.38s ease;
+    }
+
+    .accordion-panel > div { overflow: hidden; }
+
+    .accordion-item.open .accordion-panel {
+      grid-template-rows: 1fr;
+    }
+
+    .accordion-panel p {
+      padding: 0 56px 28px 4px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 720px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .accordion-panel, .acc-icon { transition: none; }
+    }
+
+    /* ============ VALUE ADDS ============ */
+    .value-adds {
+      background: #fff;
+      padding: 96px 0 110px;
+    }
+
+    .value-adds-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 64px;
+    }
+
+    .value-card .card-icon {
+      height: 52px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .value-card .card-icon svg {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .value-card h3 {
+      margin-top: 18px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .value-card p {
+      margin-top: 14px;
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: rgba(26, 29, 26, 0.78);
+    }
+
+    /* ============ WHO IT'S FOR ============ */
+    .who {
+      background: #fff;
+      padding: 0 24px 28px;
+    }
+
+    .who-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: var(--paper);
+      border-radius: 24px;
+      padding: 88px 64px 72px;
+    }
+
+    .who .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .who h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.8vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 640px;
+    }
+
+    .who-blocks {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .who-block {
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .who-media {
+      position: relative;
+      height: 260px;
+      flex-shrink: 0;
+      /* intentional-looking slot while the real photo is missing */
+      background:
+        repeating-linear-gradient(45deg, rgba(26,29,26,0.05) 0 10px, transparent 10px 20px),
+        var(--paper);
+    }
+
+    .who-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .who-block-body {
+      padding: 40px 44px 44px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .who-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 44px rgba(26, 29, 26, 0.14);
+    }
+
+    .who-block h3 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(24px, 2.4vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .who-block p {
+      margin-top: 16px;
+      font-size: 17px;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .who-link {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .who-link .arrow { transition: transform 0.2s ease; }
+    .who-link:hover .arrow { transform: translateX(4px); }
+
+    .who-block-ink {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .who-block-ink p { color: rgba(255, 255, 255, 0.78); }
+    .who-block-ink .who-link { color: var(--lime); }
+
+    .who-block-lime {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .who-block-lime p { color: rgba(26, 29, 26, 0.75); }
+    .who-block-lime .who-link { color: var(--ink); }
+
+    .who-note {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--copper);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .who-block, .who-link .arrow { transition: none; }
+      .who-block:hover { transform: none; }
+    }
+
+    /* ============ THE SHIFT (stats) ============ */
+    .shift {
+      background: #fff;
+      padding: 0 24px 28px;
+    }
+
+    .shift-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background:
+        radial-gradient(800px 400px at 50% 120%, rgba(184, 122, 75, 0.08), transparent 60%),
+        var(--paper);
+      border-radius: 24px;
+      padding: 88px 64px 84px;
+    }
+
+    /* stats column left, headline block right — like the reference */
+    .shift-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+
+    .shift-stats-col { grid-column: 1; grid-row: 1; }
+    .shift-head { grid-column: 2; grid-row: 1; }
+
+    .shift .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .shift h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 560px;
+    }
+
+    .shift-head .lead {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 500;
+      color: rgba(26, 29, 26, 0.85);
+      max-width: 500px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px;
+    }
+
+    .stat {
+      text-align: left;
+      border-left: 1.5px solid rgba(26, 29, 26, 0.22);
+      padding-left: 26px;
+    }
+
+    .stat + .stats-bottom,
+    .stats-bottom { margin-top: 64px; }
+
+    .stat-number {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(52px, 5.2vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-green .stat-number { color: var(--deep-green); }
+    .stat-copper .stat-number { color: var(--copper); }
+    .stat-ink .stat-number { color: var(--ink); }
+
+    .stat-label {
+      margin-top: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 300px;
+    }
+
+    /* big bold closing statement, bottom-left like the reference */
+    .shift-closing {
+      margin-top: 88px;
+      font-size: clamp(32px, 3.6vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 640px;
+    }
+
+    /* fade-up on scroll into view */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .how {
+      background: #fff;
+      padding: 96px 40px 110px;
+    }
+
+    .how-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 88px;
+      align-items: start;
+    }
+
+    .how .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .how h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(36px, 4.2vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .how h2 .muted-line {
+      display: block;
+      color: var(--copper);
+    }
+
+    .how .lead {
+      margin-top: 26px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(26, 29, 26, 0.8);
+      max-width: 520px;
+    }
+
+    .how-art {
+      margin-top: 56px;
+      max-width: 440px;
+    }
+
+    .how-art svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* numbered accordion (steps) */
+    .steps .accordion-item {
+      border-bottom: 1px solid rgba(26, 29, 26, 0.16);
+    }
+
+    .steps .accordion-item:first-child {
+      border-top: 1px solid rgba(26, 29, 26, 0.16);
+    }
+
+    .steps .accordion-trigger {
+      color: var(--ink);
+      padding: 30px 4px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(26, 29, 26, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .steps .accordion-trigger:hover .step-num {
+      background: rgba(26, 29, 26, 0.12);
+    }
+
+    .steps .accordion-item.open .step-num {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .steps .accordion-panel p {
+      color: rgba(26, 29, 26, 0.75);
+      padding: 0 56px 30px 4px;
+    }
+
+    /* ============ NO TRADE-OFFS (Keep your ___) ============ */
+    .keep {
+      background: #fff;
+      padding: 10px 40px 110px;
+    }
+
+    .keep-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .keep .eyebrow {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    .keep h2 {
+      margin-top: 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 3.8vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    .keep-cards {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .keep-card {
+      border: 1px solid rgba(26, 29, 26, 0.14);
+      border-radius: 14px;
+      padding: 24px 24px 36px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .keep-media {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 240px;
+      background:
+        repeating-linear-gradient(45deg, rgba(26,29,26,0.05) 0 10px, transparent 10px 20px),
+        var(--paper);
+    }
+
+    .keep-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .keep-title {
+      margin-top: 32px;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .keep-title .keep-word {
+      display: block;
+      margin-top: 4px;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3vw, 42px);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--copper);
+    }
+
+    .keep-card p {
+      margin-top: 16px;
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: rgba(26, 29, 26, 0.75);
+    }
+
+    /* ============ FINAL CTA ============ */
+    .final-cta {
+      background: #fff;
+      padding: 0 24px 28px;
+    }
+
+    .final-cta-card {
+      max-width: 1280px;
+      margin: 0 auto;
+      background:
+        radial-gradient(900px 500px at 15% -20%, rgba(185, 230, 60, 0.12), transparent 60%),
+        radial-gradient(800px 450px at 90% 120%, rgba(245, 242, 234, 0.08), transparent 55%),
+        var(--deep-green);
+      border-radius: 24px;
+      padding: 110px 40px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .final-cta h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.2vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #fff;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .final-cta .sub {
+      margin: 20px auto 0;
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 520px;
+    }
+
+    .final-cta-actions {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .final-cta .whatsapp-link { color: #fff; }
+    .final-cta .whatsapp-link:hover { border-color: var(--lime); }
+    .final-cta .green-dot {
+      background: var(--lime);
+      box-shadow: 0 0 0 3px rgba(185, 230, 60, 0.2);
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--deep-green);
+      color: #fff;
+      margin-top: 28px;
+      padding: 64px 40px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .footer .logo { color: #fff; }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.18s ease;
+    }
+
+    .footer-links a:hover { color: var(--lime); }
+
+    .footer-legal {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 880px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 960px) {
+      .nav-links a:not(.btn) { display: none; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 64px 24px 80px;
+        gap: 48px;
+      }
+      .hero-copy { max-width: 100%; }
+      .nav-inner { padding: 0 24px; }
+      .final-cta { padding: 0 16px 20px; }
+      .final-cta-card { padding: 72px 24px; border-radius: 18px; }
+      .footer { padding: 48px 24px 40px; margin-top: 20px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .keep { padding: 8px 24px 72px; }
+      .keep-cards { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
+      .keep-media { height: 200px; }
+      .how { padding: 64px 24px 72px; }
+      .how-inner { grid-template-columns: 1fr; gap: 52px; }
+      .how-art { margin-top: 40px; }
+      .steps .accordion-panel p { padding-right: 12px; }
+      .shift { padding: 0 16px 20px; }
+      .shift-card { padding: 56px 24px 56px; border-radius: 18px; }
+      .shift-grid { grid-template-columns: 1fr; gap: 48px; }
+      .shift-stats-col, .shift-head { grid-column: auto; grid-row: auto; }
+      .stats-row { grid-template-columns: 1fr; gap: 36px; }
+      .stats-bottom { margin-top: 36px; }
+      .stat-label { max-width: none; }
+      .shift-closing { margin-top: 56px; }
+      .who { padding: 0 16px 20px; }
+      .who-card { padding: 56px 24px 52px; border-radius: 18px; }
+      .who-blocks { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
+      .who-block-body { padding: 32px 28px 30px; }
+      .who-media { height: 210px; }
+      .concierge { padding: 20px 16px 0; }
+      .concierge-card { padding: 60px 24px 64px; border-radius: 18px; }
+      .accordion { margin-top: 44px; }
+      .accordion-panel p { padding-right: 12px; }
+      .value-adds { padding: 72px 0 80px; }
+      .value-adds-inner {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 48px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 40px; }
+      .hero-ctas { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#">Barrel</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#what-we-do">What we do</a>
+        <a href="#who-its-for">Who it&rsquo;s for</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="btn btn-lime" href="#quote">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>
+          <span class="line">Transact globally.</span>
+          <span class="line cycle-wrap">Kill your <span class="cycle-word" id="cycleWord">bank fees</span><span class="cursor" aria-hidden="true"></span></span>
+        </h1>
+
+        <p class="hero-sub">
+          FX Concierge of Record infrastructure that sources, settles, and handles
+          your cross-border payments &mdash; licensed, transparent, done for you.
+        </p>
+
+        <div class="micro-strip" role="list">
+          <span role="listitem">Licensed by design</span>
+          <span class="dot-sep" aria-hidden="true"></span>
+          <span role="listitem">Transparent rates</span>
+          <span class="dot-sep" aria-hidden="true"></span>
+          <span role="listitem">Risk handled for you</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-lime" href="#quote">Get a Quote</a>
+          <a class="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
+            <span class="green-dot" aria-hidden="true"></span>
+            Talk to us on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <!-- Isometric-style illustration: barrel platform routing currencies -->
+        <svg viewBox="0 0 560 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- soft ground ellipse -->
+          <ellipse cx="285" cy="330" rx="245" ry="118" fill="#2F4A2E" opacity="0.06"/>
+          <ellipse cx="285" cy="330" rx="245" ry="118" stroke="#2F4A2E" stroke-opacity="0.18" stroke-dasharray="3 6"/>
+
+          <!-- dotted connection paths -->
+          <path d="M120 300 Q 200 245 262 282" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+          <path d="M452 292 Q 380 240 318 276" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+          <path d="M285 148 L 285 208" stroke="#2F4A2E" stroke-width="1.6" stroke-dasharray="2 6"/>
+
+          <!-- central platform (isometric slab) -->
+          <g>
+            <path d="M285 208 L 415 273 L 285 338 L 155 273 Z" fill="#1A1D1A"/>
+            <path d="M155 273 L 155 300 L 285 365 L 285 338 Z" fill="#2F4A2E"/>
+            <path d="M415 273 L 415 300 L 285 365 L 285 338 Z" fill="#141714"/>
+            <!-- top surface grid -->
+            <path d="M285 224 L 383 273 L 285 322 L 187 273 Z" stroke="#B9E63C" stroke-opacity="0.35" fill="none"/>
+            <!-- status lights -->
+            <circle cx="352" cy="298" r="4" fill="#B9E63C"/>
+            <circle cx="368" cy="290" r="4" fill="#B9E63C" opacity="0.55"/>
+            <circle cx="384" cy="282" r="4" fill="#B9E63C" opacity="0.3"/>
+          </g>
+
+          <!-- barrel on the platform -->
+          <g class="float-a">
+            <path d="M247 158 C 247 145 262 136 285 136 C 308 136 323 145 323 158 L 323 236 C 323 249 308 258 285 258 C 262 258 247 249 247 236 Z" fill="#B87A4B"/>
+            <path d="M247 158 C 247 145 262 136 285 136 C 308 136 323 145 323 158 L 323 236 C 323 249 308 258 285 258 C 262 258 247 249 247 236 Z" fill="url(#barrelShade)"/>
+            <ellipse cx="285" cy="158" rx="38" ry="15" fill="#D9995F"/>
+            <ellipse cx="285" cy="158" rx="38" ry="15" stroke="#1A1D1A" stroke-opacity="0.25"/>
+            <!-- hoops -->
+            <path d="M244 185 C 254 194 316 194 326 185" stroke="#1A1D1A" stroke-opacity="0.4" stroke-width="5" fill="none"/>
+            <path d="M244 219 C 254 228 316 228 326 219" stroke="#1A1D1A" stroke-opacity="0.4" stroke-width="5" fill="none"/>
+            <!-- B mark -->
+            <text x="285" y="216" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="34" fill="#F5F2EA">B</text>
+          </g>
+
+          <!-- coin: dollar (left) -->
+          <g class="float-b">
+            <ellipse cx="118" cy="296" rx="34" ry="14" fill="#2F4A2E" opacity="0.18"/>
+            <circle cx="118" cy="268" r="30" fill="#F5F2EA" stroke="#2F4A2E" stroke-width="2"/>
+            <circle cx="118" cy="268" r="23" stroke="#2F4A2E" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="118" y="277" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#2F4A2E">$</text>
+          </g>
+
+          <!-- coin: pound (right) -->
+          <g class="float-c">
+            <ellipse cx="455" cy="288" rx="34" ry="14" fill="#2F4A2E" opacity="0.18"/>
+            <circle cx="455" cy="260" r="30" fill="#F5F2EA" stroke="#B87A4B" stroke-width="2"/>
+            <circle cx="455" cy="260" r="23" stroke="#B87A4B" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="455" y="269" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#B87A4B">&#163;</text>
+          </g>
+
+          <!-- coin: euro (upper right) -->
+          <g class="float-b">
+            <circle cx="408" cy="130" r="26" fill="#F5F2EA" stroke="#2F4A2E" stroke-width="2"/>
+            <circle cx="408" cy="130" r="19" stroke="#2F4A2E" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="408" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="21" fill="#2F4A2E">&#8364;</text>
+          </g>
+
+          <!-- shield: licensed (upper left) -->
+          <g class="float-c">
+            <path d="M158 96 L 190 108 L 190 140 C 190 160 176 172 158 180 C 140 172 126 160 126 140 L 126 108 Z" fill="#2F4A2E"/>
+            <path d="M144 138 L 155 149 L 174 124" stroke="#B9E63C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+
+          <!-- small check tile (bottom right, like reach's) -->
+          <g>
+            <path d="M362 372 L 396 355 L 430 372 L 396 389 Z" fill="#F5F2EA" stroke="#1A1D1A" stroke-opacity="0.25"/>
+            <path d="M385 371 L 393 377 L 408 364" stroke="#2F4A2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+
+          <!-- rate card (left of platform) -->
+          <g class="float-a">
+            <path d="M175 352 L 175 392 L 233 421 L 233 381 Z" fill="#fff" stroke="#1A1D1A" stroke-opacity="0.2"/>
+            <path d="M184 372 L 200 380 M184 383 L 214 398 M184 394 L 208 406" stroke="#B87A4B" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="222" cy="392" r="5" fill="#B9E63C"/>
+          </g>
+
+          <defs>
+            <linearGradient id="barrelShade" x1="247" y1="197" x2="323" y2="197" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1A1D1A" stop-opacity="0.22"/>
+              <stop offset="0.5" stop-color="#1A1D1A" stop-opacity="0"/>
+              <stop offset="1" stop-color="#1A1D1A" stop-opacity="0.28"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FX CONCIERGE OF RECORD (trust engine) ============ -->
+  <section class="concierge" id="fx-concierge">
+    <div class="concierge-card">
+      <div class="concierge-head">
+        <span class="eyebrow">What&rsquo;s an FX Concierge of Record?</span>
+        <h2>Your accountable party for cross&#8209;border currency.</h2>
+        <p class="lead">
+          Every cross-border transaction needs someone on record &mdash; for the rate,
+          the transfer, and the trail it leaves. Barrel is that party. We source the
+          currency, settle the payment, and stand accountable for it, end to end.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            How is my rate set?
+            <span class="acc-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>One transparent, all-in rate, confirmed before you commit. No markup slipped in afterward. What we quote is what you pay.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Is Barrel licensed?
+            <span class="acc-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Yes. Every transaction runs through a registered money services business with a documented trail &mdash; an accountable, regulated entity, not an individual&rsquo;s account.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            How is my money protected?
+            <span class="acc-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Barrel is the named party on record for your transaction. There&rsquo;s a paper trail from quote to settlement, and a real person you can reach at every step.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            How does settlement work?
+            <span class="acc-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>You tell us what you need and fund the transaction. We source the currency and settle it to the destination, then send you proof it&rsquo;s done.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            Which currencies and corridors do you cover?
+            <span class="acc-icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>USD, EUR, GBP, CAD, Chinese yuan (CNY), and other major currencies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUE ADDS ============ -->
+  <section class="value-adds" id="what-we-do">
+    <div class="value-adds-inner">
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- 2x2 tile cluster: licensed corridors -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M6 10 L 9 13 L 14 7" stroke="#B9E63C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="24" y="0" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M29 10 H 39 M34 5 V 15" stroke="#F5F2EA" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="0" y="24" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <circle cx="10" cy="34" r="4.5" stroke="#F5F2EA" stroke-width="2.2"/>
+            <rect x="24" y="24" width="20" height="20" rx="6" fill="#1A1D1A"/>
+            <path d="M30 34 L 38 34 M35 30 L 38 34 L 35 38" stroke="#F5F2EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Licensed rails, everywhere you trade</h3>
+        <p>Move money through regulated partners and licensed corridors &mdash; compliance is built in before a single dollar moves.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- four check circles on a dashed frame: transparent coverage -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="9" width="26" height="26" rx="4" stroke="#1A1D1A" stroke-width="1.4" stroke-dasharray="3 4"/>
+            <circle cx="9" cy="9" r="8" fill="#1A1D1A"/>
+            <path d="M5.5 9 L 8 11.5 L 12.5 6.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="9" r="8" fill="#1A1D1A"/>
+            <path d="M31.5 9 L 34 11.5 L 38.5 6.5" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="35" r="8" fill="#1A1D1A"/>
+            <path d="M5.5 35 L 8 37.5 L 12.5 32.5" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="35" r="8" fill="#1A1D1A"/>
+            <path d="M31.5 35 L 34 37.5 L 38.5 32.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Transparent rates, no buried spread</h3>
+        <p>You see the mid-market rate and our fee before you commit. No hidden spread, no surprise deductions at settlement.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- stacked blocks + gear: concierge handles the machinery -->
+          <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="2" width="9" height="9" rx="2" fill="#1A1D1A"/>
+            <rect x="0" y="17" width="9" height="9" rx="2" fill="#1A1D1A" opacity="0.55"/>
+            <rect x="0" y="32" width="9" height="9" rx="2" fill="#1A1D1A"/>
+            <path d="M9 6.5 H 17 V 36.5 H 9 M17 21.5 H 24" stroke="#1A1D1A" stroke-width="1.6"/>
+            <g>
+              <circle cx="36" cy="21.5" r="7" stroke="#1A1D1A" stroke-width="3.4"/>
+              <path d="M36 9.5 V 13 M36 30 V 33.5 M24 21.5 H 27.5 M44.5 21.5 H 48 M27.6 13.1 L 30 15.5 M42 27.5 L 44.4 29.9 M44.4 13.1 L 42 15.5 M30 27.5 L 27.6 29.9" stroke="#1A1D1A" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Concierge service, done for you</h3>
+        <p>Tell us what to move and where. We source liquidity, settle, and confirm &mdash; over WhatsApp or wherever you work.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ WHO IT'S FOR ============ -->
+  <section class="who" id="who-its-for">
+    <div class="who-card">
+      <span class="eyebrow">Who it&rsquo;s for</span>
+      <h2>Built for businesses that move money across borders.</h2>
+
+      <div class="who-blocks">
+        <div class="who-block who-block-ink">
+          <div class="who-media">
+            <img src="assets/import-trade.jpg"
+                 alt="Worker checking incoming shipment boxes in a warehouse"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <div class="who-block-body">
+            <h3>Importing &amp; paying out</h3>
+            <p>Sourcing goods and materials, or paying partners and vendors abroad. Get the currency you need and settle on time &mdash; without banks slowing you down.</p>
+            <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="who-block who-block-lime">
+          <div class="who-media">
+            <img src="assets/export-trade.jpg"
+                 alt="Worker preparing goods for export at a shipping yard"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <div class="who-block-body">
+            <h3>Exporting &amp; getting paid</h3>
+            <p>Earning in foreign currency and bringing it home. Convert and settle on your terms, at a rate you can actually see.</p>
+            <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+
+      <p class="who-note">One infrastructure. Both directions.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE SHIFT ============ -->
+  <section class="shift">
+    <div class="shift-card">
+      <div class="shift-grid">
+        <div class="shift-head">
+          <span class="eyebrow">The Shift</span>
+          <h2>Cross-border payments are broken for growing businesses.</h2>
+          <p class="lead">Fees stack up, settlement drags on, and the market keeps growing anyway. The infrastructure hasn&rsquo;t caught up &mdash; that&rsquo;s the shift Barrel is built for.</p>
+        </div>
+
+        <div class="shift-stats-col">
+          <div class="stats-row">
+            <div class="stat stat-green reveal">
+              <span class="stat-number" data-count="8" data-suffix="%">8%</span>
+              <p class="stat-label">lost on the average cross-border transaction, more than double the global benchmark</p>
+            </div>
+
+            <div class="stat stat-copper reveal">
+              <span class="stat-number">Days</span>
+              <p class="stat-label">of settlement delay while deals stall and cash sits frozen</p>
+            </div>
+          </div>
+
+          <div class="stats-bottom">
+            <div class="stat stat-ink reveal">
+              <span class="stat-number" data-count="300" data-prefix="$" data-suffix="B+">$300B+</span>
+              <p class="stat-label">in projected cross-border B2B volume by 2033, a market moving without the right infrastructure</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="shift-closing reveal">Barrel exists to fix that.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how" id="how-it-works">
+    <div class="how-inner">
+      <div class="how-copy">
+        <span class="eyebrow">How it works</span>
+        <h2>
+          <span class="muted-line">Live in one conversation.</span>
+          Three steps. No guesswork.
+        </h2>
+        <p class="lead">
+          Not an app. Not a middleman who goes quiet when something goes wrong.
+          A real concierge who takes care of the whole transaction, with a full
+          paper trail and someone you can always reach.
+        </p>
+
+        <div class="how-art" aria-hidden="true">
+          <!-- chat conversation driving a settlement, isometric-ish -->
+          <svg viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- dotted route from chat to platform -->
+            <path d="M118 96 Q 200 120 250 170" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+            <path d="M330 96 Q 300 130 280 162" stroke="#2F4A2E" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+
+            <!-- chat bubble: request -->
+            <g>
+              <rect x="28" y="40" width="150" height="56" rx="14" fill="#F5F2EA" stroke="#1A1D1A" stroke-opacity="0.2"/>
+              <path d="M52 96 L 60 110 L 68 96 Z" fill="#F5F2EA"/>
+              <circle cx="52" cy="68" r="9" fill="#2F4A2E"/>
+              <path d="M48.5 68 L 51 70.5 L 55.5 65.5" stroke="#B9E63C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M70 63 H 156 M70 74 H 132" stroke="#1A1D1A" stroke-opacity="0.45" stroke-width="3.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- chat bubble: quoted rate -->
+            <g>
+              <rect x="262" y="34" width="140" height="52" rx="14" fill="#B9E63C"/>
+              <path d="M370 86 L 378 100 L 386 86 Z" fill="#B9E63C"/>
+              <text x="284" y="66" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#1A1D1A">1 USD = 0.92&#8364;</text>
+            </g>
+
+            <!-- settlement platform -->
+            <g>
+              <path d="M265 170 L 355 215 L 265 260 L 175 215 Z" fill="#1A1D1A"/>
+              <path d="M175 215 L 175 236 L 265 281 L 265 260 Z" fill="#2F4A2E"/>
+              <path d="M355 215 L 355 236 L 265 281 L 265 260 Z" fill="#141714"/>
+              <path d="M265 182 L 331 215 L 265 248 L 199 215 Z" stroke="#B9E63C" stroke-opacity="0.35" fill="none"/>
+              <circle cx="310" cy="232" r="3.5" fill="#B9E63C"/>
+              <circle cx="322" cy="226" r="3.5" fill="#B9E63C" opacity="0.5"/>
+            </g>
+
+            <!-- barrel token on platform -->
+            <g>
+              <path d="M243 150 C 243 143 252 138 265 138 C 278 138 287 143 287 150 L 287 196 C 287 203 278 208 265 208 C 252 208 243 203 243 196 Z" fill="#B87A4B"/>
+              <ellipse cx="265" cy="150" rx="22" ry="8.5" fill="#D9995F"/>
+              <path d="M241 166 C 247 171 283 171 289 166 M241 184 C 247 189 283 189 289 184" stroke="#1A1D1A" stroke-opacity="0.35" stroke-width="3" fill="none"/>
+            </g>
+
+            <!-- proof receipt -->
+            <g>
+              <rect x="60" y="196" width="84" height="104" rx="8" fill="#fff" stroke="#1A1D1A" stroke-opacity="0.2"/>
+              <path d="M74 218 H 130 M74 236 H 118 M74 254 H 126" stroke="#1A1D1A" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="86" cy="278" r="10" fill="#2F4A2E"/>
+              <path d="M81.5 278 L 85 281.5 L 91 274.5" stroke="#B9E63C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M144 248 Q 170 240 186 224" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="accordion steps">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true">
+            Tell us what you need
+            <span class="step-num" aria-hidden="true">1</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>The amount, the currencies, the transaction. A message is enough to start.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            We confirm your rate
+            <span class="step-num" aria-hidden="true">2</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Transparent and all-in, before you commit. What we quote is what you pay.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            We settle it
+            <span class="step-num" aria-hidden="true">3</span>
+          </button>
+          <div class="accordion-panel">
+            <div>
+              <p>Sourcing, conversion, settlement &mdash; and proof once it&rsquo;s done. Confirmation, not excuses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NO TRADE-OFFS ============ -->
+  <section class="keep">
+    <div class="keep-inner">
+      <span class="eyebrow">No trade-offs</span>
+      <h2>Add Barrel without giving anything up.</h2>
+
+      <div class="keep-cards">
+        <div class="keep-card">
+          <div class="keep-media">
+            <img src="assets/keep-workflow.jpg"
+                 alt="Team working together at their usual workspace"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <h3 class="keep-title">Keep your <span class="keep-word">workflow</span></h3>
+          <p>Slot Barrel into how you already operate. No new systems to learn, no process to rebuild.</p>
+        </div>
+
+        <div class="keep-card">
+          <div class="keep-media">
+            <img src="assets/keep-banking.jpg"
+                 alt="Business owner reviewing accounts with their bank"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <h3 class="keep-title">Keep your <span class="keep-word">banking</span></h3>
+          <p>We handle the FX and settlement layer. Your existing accounts and providers stay exactly where they are.</p>
+        </div>
+
+        <div class="keep-card">
+          <div class="keep-media">
+            <img src="assets/keep-control.jpg"
+                 alt="Business owner checking transaction records on their phone"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <h3 class="keep-title">Keep your <span class="keep-word">control</span></h3>
+          <p>See every rate before you commit and get proof on every transaction. Full visibility, start to finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta" id="quote">
+    <div class="final-cta-card">
+      <h2>Move your money the right way.</h2>
+      <p class="sub">Speak to us and get a transparent quote in one conversation.</p>
+      <div class="final-cta-actions">
+        <a class="btn btn-lime" href="https://wa.me/" target="_blank" rel="noopener">Get a Quote</a>
+        <a class="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
+          <span class="green-dot" aria-hidden="true"></span>
+          Message us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a class="logo" href="#">Barrel</a>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#what-we-do">What we do</a>
+          <a href="#who-its-for">Who it&rsquo;s for</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#quote">Get a Quote</a>
+        </nav>
+      </div>
+      <p class="footer-legal">
+        Barrel Technologies. [Entity registration &amp; licensing line to confirm.]
+        Figures cited reflect industry data on cross-border payments and are
+        provided for context. Barrel is a service for moving foreign currency;
+        it is not a bank.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var el = document.getElementById("cycleWord");
+      var words = ["bank fees", "bad rates", "FX risk", "the wait"];
+      var TYPE_MS = 95;
+      var DELETE_MS = 45;
+      var PAUSE_MS = 1500;
+
+      // Respect reduced motion: keep static "bank fees" and stop the cursor blink.
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = words[0];
+        var cursor = document.querySelector(".cursor");
+        if (cursor) cursor.style.animation = "none";
+        return;
+      }
+
+      var wordIndex = 0;
+      var charIndex = words[0].length; // start with the first word fully typed
+      var deleting = false;
+
+      function tick() {
+        var word = words[wordIndex];
+
+        if (!deleting) {
+          if (charIndex < word.length) {
+            charIndex++;
+            el.textContent = word.slice(0, charIndex);
+            setTimeout(tick, TYPE_MS);
+          } else {
+            deleting = true;
+            setTimeout(tick, PAUSE_MS);
+          }
+        } else {
+          if (charIndex > 0) {
+            charIndex--;
+            el.textContent = word.slice(0, charIndex);
+            setTimeout(tick, DELETE_MS);
+          } else {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(tick, TYPE_MS);
+          }
+        }
+      }
+
+      setTimeout(tick, PAUSE_MS);
+    })();
+
+    // The Shift: fade-up reveal + count-up when the stats scroll into view
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+      if (reduced || !("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+
+      function countUp(el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var prefix = el.getAttribute("data-prefix") || "";
+        var suffix = el.getAttribute("data-suffix") || "";
+        var duration = 1200;
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = prefix + Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add("in");
+          var num = el.querySelector("[data-count]");
+          if (num) countUp(num);
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.35 });
+
+      reveals.forEach(function (el, i) {
+        el.style.transitionDelay = (i % 3) * 90 + "ms";
+        observer.observe(el);
+      });
+    })();
+
+    // Accordions: one open at a time per accordion, one-click expand
+    (function () {
+      var accordions = Array.prototype.slice.call(document.querySelectorAll(".accordion"));
+      accordions.forEach(function (acc) {
+        var items = Array.prototype.slice.call(acc.querySelectorAll(".accordion-item"));
+        items.forEach(function (item) {
+          var trigger = item.querySelector(".accordion-trigger");
+          trigger.addEventListener("click", function () {
+            var isOpen = item.classList.contains("open");
+            items.forEach(function (other) {
+              other.classList.remove("open");
+              other.querySelector(".accordion-trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("open");
+              trigger.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
