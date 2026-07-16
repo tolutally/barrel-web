@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barrel — Transact globally. Kill your bank fees.</title>
-  <meta name="description" content="FX Concierge of Record infrastructure that sources, settles, and handles your cross-border payments — licensed, transparent, done for you." />
+  <title>Barrel — Transact globally. We pay whoever you need, on your behalf.</title>
+  <meta name="description" content="Barrel collects, converts, and pays whoever you need — anywhere in the world. Your licensed FX Concierge of Record: transparent, accountable, done for you." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -228,6 +228,13 @@
     }
 
     .whatsapp-link:hover { border-color: var(--deep-green); }
+
+    .cta-microcopy {
+      margin-top: 14px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: rgba(26, 29, 26, 0.58);
+    }
 
     .green-dot {
       width: 9px;
@@ -459,6 +466,17 @@
       font-size: 16.5px;
       line-height: 1.6;
       color: rgba(26, 29, 26, 0.78);
+    }
+
+    .value-adds-note {
+      max-width: 1280px;
+      margin: 44px auto 0;
+      padding: 0 40px;
+      text-align: center;
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.5;
+      color: rgba(26, 29, 26, 0.66);
     }
 
     /* ============ WHO IT'S FOR ============ */
@@ -945,6 +963,8 @@
       gap: 28px;
     }
 
+    .final-cta .cta-microcopy { text-align: center; }
+
     .final-cta .whatsapp-link { color: var(--ink); }
     .final-cta .whatsapp-link:hover { border-color: var(--deep-green); }
     .final-cta .green-dot {
@@ -1109,7 +1129,7 @@
         <a href="#what-we-do">What we do</a>
         <a href="#who-its-for">Who it&rsquo;s for</a>
         <a href="#how-it-works">How it works</a>
-        <a class="btn btn-lime" href="#quote">Get a Quote</a>
+        <a class="btn btn-lime" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
       </nav>
     </div>
   </header>
@@ -1120,21 +1140,18 @@
       <div class="hero-copy">
         <h1>
           <span class="line">Transact globally.</span>
-          <span class="line cycle-wrap">Kill your <span class="cycle-word" id="cycleWord">bank fees</span><span class="cursor" aria-hidden="true"></span></span>
+          <span class="line cycle-wrap">Kill the <span class="cycle-word" id="cycleWord">guesswork</span><span class="cursor" aria-hidden="true"></span></span>
         </h1>
 
         <p class="hero-sub">
-          FX Concierge of Record infrastructure that sources, settles, and handles
-          your cross-border payments &mdash; licensed, transparent, done for you.
+          We collect, convert, and pay whoever you need, anywhere in the world.
+          One instruction, settled end to end, on your behalf.
         </p>
 
         <div class="hero-ctas">
-          <a class="btn btn-lime" href="#quote">Get a Quote</a>
-          <a class="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
-            <span class="green-dot" aria-hidden="true"></span>
-            Talk to us
-          </a>
+          <a class="btn btn-lime" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
         </div>
+        <p class="cta-microcopy">Send us your amount, get a rate back - no obligation.</p>
       </div>
 
       <div class="hero-art" aria-hidden="true">
@@ -1150,7 +1167,25 @@
 
         <div class="value-card">
           <div class="card-icon" aria-hidden="true">
-            <!-- 2x2 tile cluster: licensed corridors -->
+            <!-- stacked blocks + gear: we run the machinery and pay on your behalf -->
+            <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="2" width="9" height="9" rx="2" fill="#1A1D1A"/>
+              <rect x="0" y="17" width="9" height="9" rx="2" fill="#1A1D1A" opacity="0.55"/>
+              <rect x="0" y="32" width="9" height="9" rx="2" fill="#1A1D1A"/>
+              <path d="M9 6.5 H 17 V 36.5 H 9 M17 21.5 H 24" stroke="#1A1D1A" stroke-width="1.6"/>
+              <g>
+                <circle cx="36" cy="21.5" r="7" stroke="#1A1D1A" stroke-width="3.4"/>
+                <path d="M36 9.5 V 13 M36 30 V 33.5 M24 21.5 H 27.5 M44.5 21.5 H 48 M27.6 13.1 L 30 15.5 M42 27.5 L 44.4 29.9 M44.4 13.1 L 42 15.5 M30 27.5 L 27.6 29.9" stroke="#1A1D1A" stroke-width="3" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3>We pay, on your behalf</h3>
+          <p>Not just a transfer. Fund it once and we collect, convert, and pay whoever you need paid - supplier, partner, or contractor - anywhere in the world. You don&rsquo;t chase the recipient. We settle it for you.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="card-icon" aria-hidden="true">
+            <!-- 2x2 tile cluster: licensed and accountable -->
             <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0" y="0" width="20" height="20" rx="6" fill="#1A1D1A"/>
               <path d="M6 10 L 9 13 L 14 7" stroke="#B9E63C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1162,8 +1197,8 @@
               <path d="M30 34 L 38 34 M35 30 L 38 34 L 35 38" stroke="#F5F2EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3>Licensed rails, everywhere you trade</h3>
-          <p>Move money through regulated partners and licensed corridors &mdash; compliance is built in before a single dollar moves.</p>
+          <h3>Licensed and accountable</h3>
+          <p>Every transaction runs through a Canadian MSB registered with FINTRAC, with a documented trail. Not a middleman you can&rsquo;t trace.</p>
         </div>
 
         <div class="value-card">
@@ -1182,28 +1217,11 @@
             </svg>
           </div>
           <h3>Transparent rates, no buried spread</h3>
-          <p>You see the mid-market rate and our fee before you commit. No hidden spread, no surprise deductions at settlement.</p>
-        </div>
-
-        <div class="value-card">
-          <div class="card-icon" aria-hidden="true">
-            <!-- stacked blocks + gear: concierge handles the machinery -->
-            <svg viewBox="0 0 96 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="2" width="9" height="9" rx="2" fill="#1A1D1A"/>
-              <rect x="0" y="17" width="9" height="9" rx="2" fill="#1A1D1A" opacity="0.55"/>
-              <rect x="0" y="32" width="9" height="9" rx="2" fill="#1A1D1A"/>
-              <path d="M9 6.5 H 17 V 36.5 H 9 M17 21.5 H 24" stroke="#1A1D1A" stroke-width="1.6"/>
-              <g>
-                <circle cx="36" cy="21.5" r="7" stroke="#1A1D1A" stroke-width="3.4"/>
-                <path d="M36 9.5 V 13 M36 30 V 33.5 M24 21.5 H 27.5 M44.5 21.5 H 48 M27.6 13.1 L 30 15.5 M42 27.5 L 44.4 29.9 M44.4 13.1 L 42 15.5 M30 27.5 L 27.6 29.9" stroke="#1A1D1A" stroke-width="3" stroke-linecap="round"/>
-              </g>
-            </svg>
-          </div>
-          <h3>Concierge service, done for you</h3>
-          <p>Tell us what to move and where. We source liquidity, settle, and confirm &mdash; over WhatsApp or wherever you work.</p>
+          <p>You see the rate and our fee before you commit. No hidden spread, no surprise deductions at settlement.</p>
         </div>
 
       </div>
+      <p class="value-adds-note">Not an app. Not a middleman who goes quiet. A real party on record, reachable at every step.</p>
     </div>
   </section>
 
@@ -1214,7 +1232,7 @@
         <span class="eyebrow">What&rsquo;s an FX Concierge of Record?</span>
         <h2>Your accountable party for cross&#8209;border currency.</h2>
         <p class="lead">
-          Every cross-border transaction needs someone on record &mdash; for the rate,
+          Every cross-border transaction needs someone on record - for the rate,
           the transfer, and the trail it leaves. Barrel is that party. We source the
           currency, settle the payment, and stand accountable for it, end to end.
         </p>
@@ -1240,7 +1258,7 @@
           </button>
           <div class="accordion-panel">
             <div>
-              <p>Yes. Every transaction runs through a registered money services business with a documented trail &mdash; an accountable, regulated entity, not an individual&rsquo;s account.</p>
+              <p>Yes. Barrel operates through a Canadian money services business registered with FINTRAC, Canada&rsquo;s financial-crimes regulator. Every transaction runs through that regulated entity with a full paper trail, not an individual&rsquo;s account.</p>
             </div>
           </div>
         </div>
@@ -1276,7 +1294,7 @@
           </button>
           <div class="accordion-panel">
             <div>
-              <p>USD, EUR, GBP, CAD, Chinese yuan (CNY), and other major currencies.</p>
+              <p>Move between the world&rsquo;s major currencies - USD, EUR, GBP, CAD, CNY, and more, through licensed partners and established corridors. Compliance is built in before a single dollar moves.</p>
             </div>
           </div>
         </div>
@@ -1322,7 +1340,7 @@
         <div class="shift-head">
           <span class="eyebrow">The Shift</span>
           <h2>Cross-border payments are broken for growing businesses.</h2>
-          <p class="lead">Fees stack up, settlement drags on, and the market keeps growing anyway. The infrastructure hasn&rsquo;t caught up &mdash; that&rsquo;s the shift Barrel is built for.</p>
+          <p class="lead">Fees stack up, settlement drags on, and the market keeps growing anyway. The infrastructure hasn&rsquo;t caught up, that&rsquo;s the shift Barrel is built for.</p>
         </div>
 
         <div class="shift-stats-col">
@@ -1350,13 +1368,11 @@
       <div class="how-copy">
         <span class="eyebrow">How it works</span>
         <h2>
-          <span class="muted-line">Live in one conversation.</span>
-          Three steps. No guesswork.
+          <span class="muted-line">Sorted in one conversation.</span>
+          Three steps, no guesswork.
         </h2>
         <p class="lead">
-          Not an app. Not a middleman who goes quiet when something goes wrong.
-          A real concierge who takes care of the whole transaction, with a full
-          paper trail and someone you can always reach.
+          You bring the transaction - we handle sourcing, settlement, and proof.
         </p>
       </div>
 
@@ -1392,7 +1408,7 @@
           </button>
           <div class="accordion-panel">
             <div>
-              <p>Sourcing, conversion, settlement &mdash; and proof once it&rsquo;s done. Confirmation, not excuses.</p>
+              <p>Sourcing, conversion, settlement and proof once it&rsquo;s done. Confirmation, not excuses.</p>
             </div>
           </div>
         </div>
@@ -1492,11 +1508,11 @@
       </div>
 
       <span class="eyebrow">Connect with us</span>
-      <h2>Move your money globally&mdash;without the hassle.</h2>
-      <p class="sub">Speak with an expert to find the fastest, most efficient way to send, receive, and manage foreign currency. We&rsquo;ll show you how Barrel can help your business move money across 70+ countries without rebuilding your existing systems.</p>
+      <h2>Move your money globally - without the wait, the guesswork, or the chase.</h2>
       <div class="final-cta-actions">
-        <a class="btn btn-green" href="https://wa.me/" target="_blank" rel="noopener">Talk to us</a>
+        <a class="btn btn-green" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
       </div>
+      <p class="cta-microcopy">Send us your amount, get a rate back - no obligation.</p>
     </div>
   </section>
 
@@ -1508,11 +1524,11 @@
           <a href="#what-we-do">What we do</a>
           <a href="#who-its-for">Who it&rsquo;s for</a>
           <a href="#how-it-works">How it works</a>
-          <a href="#quote">Get a Quote</a>
+          <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
         </nav>
       </div>
       <p class="footer-legal">
-        Barrel Technologies. [Entity registration &amp; licensing line to confirm.]
+        Barrel Technologies operates through a Canadian MSB registered with FINTRAC.
         Figures cited reflect industry data on cross-border payments and are
         provided for context. Barrel is a service for moving foreign currency;
         it is not a bank.
@@ -1531,12 +1547,12 @@
   <script>
     (function () {
       var el = document.getElementById("cycleWord");
-      var words = ["bank fees", "bad rates", "FX risk", "the wait"];
+      var words = ["guesswork", "bank fees", "bad rates", "the wait"];
       var TYPE_MS = 95;
       var DELETE_MS = 45;
       var PAUSE_MS = 1500;
 
-      // Respect reduced motion: keep static "bank fees" and stop the cursor blink.
+      // Respect reduced motion: keep static "guesswork" and stop the cursor blink.
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         el.textContent = words[0];
         var cursor = document.querySelector(".cursor");
