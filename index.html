@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barrel — Transact globally. Kill your bank fees.</title>
+  <meta name="description" content="FX Concierge of Record infrastructure that sources, settles, and handles your cross-border payments — licensed, transparent, done for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F5F2EA;
+      --ink: #1A1D1A;
+      --lime: #B9E63C;
+      --deep-green: #2F4A2E;
+      --copper: #B87A4B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 242, 234, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26, 29, 26, 0.06);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 15.5px;
+      font-weight: 500;
+      transition: opacity 0.18s ease;
+    }
+
+    .nav-links a:hover { opacity: 0.6; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 15px 26px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-lime {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .btn-lime:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(185, 230, 60, 0.45);
+    }
+
+    .nav .btn { padding: 13px 22px; }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(1100px 600px at 8% -10%, rgba(47, 74, 46, 0.14), transparent 60%),
+        radial-gradient(900px 550px at 55% 0%, rgba(185, 230, 60, 0.10), transparent 55%),
+        linear-gradient(180deg, var(--paper) 0%, #FBFAF6 62%, #ffffff 100%);
+    }
+
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 96px 40px 120px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero-copy { max-width: 620px; }
+
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(44px, 5.6vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .hero h1 .line { display: block; }
+
+    .cycle-wrap { white-space: nowrap; }
+
+    .cycle-word { color: var(--deep-green); }
+
+    .cursor {
+      display: inline-block;
+      width: 0.09em;
+      height: 0.92em;
+      margin-left: 0.06em;
+      background: var(--lime);
+      vertical-align: -0.08em;
+      border-radius: 1px;
+      animation: blink 1.05s steps(1, end) infinite;
+    }
+
+    @keyframes blink {
+      0%, 55% { opacity: 1; }
+      56%, 100% { opacity: 0; }
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: 18.5px;
+      line-height: 1.6;
+      color: rgba(26, 29, 26, 0.78);
+      max-width: 540px;
+    }
+
+    .micro-strip {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--copper);
+    }
+
+    .micro-strip .dot-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--copper);
+      opacity: 0.65;
+    }
+
+    .hero-ctas {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 15.5px;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.18s ease;
+    }
+
+    .whatsapp-link:hover { border-color: var(--deep-green); }
+
+    .green-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--deep-green);
+      box-shadow: 0 0 0 3px rgba(47, 74, 46, 0.15);
+      flex-shrink: 0;
+    }
+
+    /* ============ HERO ART ============ */
+    .hero-art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .hero-art svg {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .float-a { animation: floaty 6s ease-in-out infinite; }
+      .float-b { animation: floaty 7.5s ease-in-out 0.8s infinite; }
+      .float-c { animation: floaty 6.8s ease-in-out 1.6s infinite; }
+      @keyframes floaty {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-9px); }
+      }
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 960px) {
+      .nav-links a:not(.btn) { display: none; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 64px 24px 80px;
+        gap: 48px;
+      }
+      .hero-copy { max-width: 100%; }
+      .nav-inner { padding: 0 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 40px; }
+      .hero-ctas { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#">Barrel</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#what-we-do">What we do</a>
+        <a href="#who-its-for">Who it&rsquo;s for</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="btn btn-lime" href="#quote">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>
+          <span class="line">Transact globally.</span>
+          <span class="line cycle-wrap">Kill your <span class="cycle-word" id="cycleWord">bank fees</span><span class="cursor" aria-hidden="true"></span></span>
+        </h1>
+
+        <p class="hero-sub">
+          FX Concierge of Record infrastructure that sources, settles, and handles
+          your cross-border payments &mdash; licensed, transparent, done for you.
+        </p>
+
+        <div class="micro-strip" role="list">
+          <span role="listitem">Licensed by design</span>
+          <span class="dot-sep" aria-hidden="true"></span>
+          <span role="listitem">Transparent rates</span>
+          <span class="dot-sep" aria-hidden="true"></span>
+          <span role="listitem">Risk handled for you</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-lime" href="#quote">Get a Quote</a>
+          <a class="whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener">
+            <span class="green-dot" aria-hidden="true"></span>
+            Talk to us on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <!-- Isometric-style illustration: barrel platform routing currencies -->
+        <svg viewBox="0 0 560 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- soft ground ellipse -->
+          <ellipse cx="285" cy="330" rx="245" ry="118" fill="#2F4A2E" opacity="0.06"/>
+          <ellipse cx="285" cy="330" rx="245" ry="118" stroke="#2F4A2E" stroke-opacity="0.18" stroke-dasharray="3 6"/>
+
+          <!-- dotted connection paths -->
+          <path d="M120 300 Q 200 245 262 282" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+          <path d="M452 292 Q 380 240 318 276" stroke="#B87A4B" stroke-width="1.6" stroke-dasharray="2 6" fill="none"/>
+          <path d="M285 148 L 285 208" stroke="#2F4A2E" stroke-width="1.6" stroke-dasharray="2 6"/>
+
+          <!-- central platform (isometric slab) -->
+          <g>
+            <path d="M285 208 L 415 273 L 285 338 L 155 273 Z" fill="#1A1D1A"/>
+            <path d="M155 273 L 155 300 L 285 365 L 285 338 Z" fill="#2F4A2E"/>
+            <path d="M415 273 L 415 300 L 285 365 L 285 338 Z" fill="#141714"/>
+            <!-- top surface grid -->
+            <path d="M285 224 L 383 273 L 285 322 L 187 273 Z" stroke="#B9E63C" stroke-opacity="0.35" fill="none"/>
+            <!-- status lights -->
+            <circle cx="352" cy="298" r="4" fill="#B9E63C"/>
+            <circle cx="368" cy="290" r="4" fill="#B9E63C" opacity="0.55"/>
+            <circle cx="384" cy="282" r="4" fill="#B9E63C" opacity="0.3"/>
+          </g>
+
+          <!-- barrel on the platform -->
+          <g class="float-a">
+            <path d="M247 158 C 247 145 262 136 285 136 C 308 136 323 145 323 158 L 323 236 C 323 249 308 258 285 258 C 262 258 247 249 247 236 Z" fill="#B87A4B"/>
+            <path d="M247 158 C 247 145 262 136 285 136 C 308 136 323 145 323 158 L 323 236 C 323 249 308 258 285 258 C 262 258 247 249 247 236 Z" fill="url(#barrelShade)"/>
+            <ellipse cx="285" cy="158" rx="38" ry="15" fill="#D9995F"/>
+            <ellipse cx="285" cy="158" rx="38" ry="15" stroke="#1A1D1A" stroke-opacity="0.25"/>
+            <!-- hoops -->
+            <path d="M244 185 C 254 194 316 194 326 185" stroke="#1A1D1A" stroke-opacity="0.4" stroke-width="5" fill="none"/>
+            <path d="M244 219 C 254 228 316 228 326 219" stroke="#1A1D1A" stroke-opacity="0.4" stroke-width="5" fill="none"/>
+            <!-- B mark -->
+            <text x="285" y="216" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="34" fill="#F5F2EA">B</text>
+          </g>
+
+          <!-- coin: dollar (left) -->
+          <g class="float-b">
+            <ellipse cx="118" cy="296" rx="34" ry="14" fill="#2F4A2E" opacity="0.18"/>
+            <circle cx="118" cy="268" r="30" fill="#F5F2EA" stroke="#2F4A2E" stroke-width="2"/>
+            <circle cx="118" cy="268" r="23" stroke="#2F4A2E" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="118" y="277" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#2F4A2E">$</text>
+          </g>
+
+          <!-- coin: pound (right) -->
+          <g class="float-c">
+            <ellipse cx="455" cy="288" rx="34" ry="14" fill="#2F4A2E" opacity="0.18"/>
+            <circle cx="455" cy="260" r="30" fill="#F5F2EA" stroke="#B87A4B" stroke-width="2"/>
+            <circle cx="455" cy="260" r="23" stroke="#B87A4B" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="455" y="269" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#B87A4B">&#163;</text>
+          </g>
+
+          <!-- coin: euro (upper right) -->
+          <g class="float-b">
+            <circle cx="408" cy="130" r="26" fill="#F5F2EA" stroke="#2F4A2E" stroke-width="2"/>
+            <circle cx="408" cy="130" r="19" stroke="#2F4A2E" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+            <text x="408" y="138" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="21" fill="#2F4A2E">&#8364;</text>
+          </g>
+
+          <!-- shield: licensed (upper left) -->
+          <g class="float-c">
+            <path d="M158 96 L 190 108 L 190 140 C 190 160 176 172 158 180 C 140 172 126 160 126 140 L 126 108 Z" fill="#2F4A2E"/>
+            <path d="M144 138 L 155 149 L 174 124" stroke="#B9E63C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+
+          <!-- small check tile (bottom right, like reach's) -->
+          <g>
+            <path d="M362 372 L 396 355 L 430 372 L 396 389 Z" fill="#F5F2EA" stroke="#1A1D1A" stroke-opacity="0.25"/>
+            <path d="M385 371 L 393 377 L 408 364" stroke="#2F4A2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+
+          <!-- rate card (left of platform) -->
+          <g class="float-a">
+            <path d="M175 352 L 175 392 L 233 421 L 233 381 Z" fill="#fff" stroke="#1A1D1A" stroke-opacity="0.2"/>
+            <path d="M184 372 L 200 380 M184 383 L 214 398 M184 394 L 208 406" stroke="#B87A4B" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="222" cy="392" r="5" fill="#B9E63C"/>
+          </g>
+
+          <defs>
+            <linearGradient id="barrelShade" x1="247" y1="197" x2="323" y2="197" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1A1D1A" stop-opacity="0.22"/>
+              <stop offset="0.5" stop-color="#1A1D1A" stop-opacity="0"/>
+              <stop offset="1" stop-color="#1A1D1A" stop-opacity="0.28"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var el = document.getElementById("cycleWord");
+      var words = ["bank fees", "bad rates", "FX risk", "the wait"];
+      var TYPE_MS = 95;
+      var DELETE_MS = 45;
+      var PAUSE_MS = 1500;
+
+      // Respect reduced motion: keep static "bank fees" and stop the cursor blink.
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = words[0];
+        var cursor = document.querySelector(".cursor");
+        if (cursor) cursor.style.animation = "none";
+        return;
+      }
+
+      var wordIndex = 0;
+      var charIndex = words[0].length; // start with the first word fully typed
+      var deleting = false;
+
+      function tick() {
+        var word = words[wordIndex];
+
+        if (!deleting) {
+          if (charIndex < word.length) {
+            charIndex++;
+            el.textContent = word.slice(0, charIndex);
+            setTimeout(tick, TYPE_MS);
+          } else {
+            deleting = true;
+            setTimeout(tick, PAUSE_MS);
+          }
+        } else {
+          if (charIndex > 0) {
+            charIndex--;
+            el.textContent = word.slice(0, charIndex);
+            setTimeout(tick, DELETE_MS);
+          } else {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(tick, TYPE_MS);
+          }
+        }
+      }
+
+      setTimeout(tick, PAUSE_MS);
+    })();
+  </script>
+</body>
+</html>
