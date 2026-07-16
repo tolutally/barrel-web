@@ -483,10 +483,36 @@
 
     .who-block {
       border-radius: 18px;
-      padding: 48px 44px 44px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .who-media {
+      position: relative;
+      height: 260px;
+      flex-shrink: 0;
+      /* intentional-looking slot while the real photo is missing */
+      background:
+        repeating-linear-gradient(45deg, rgba(26,29,26,0.05) 0 10px, transparent 10px 20px),
+        var(--paper);
+    }
+
+    .who-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .who-block-body {
+      padding: 40px 44px 44px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .who-block:hover {
@@ -566,7 +592,8 @@
       .who { padding: 0 16px 20px; }
       .who-card { padding: 56px 24px 52px; border-radius: 18px; }
       .who-blocks { grid-template-columns: 1fr; margin-top: 40px; gap: 16px; }
-      .who-block { padding: 36px 28px 32px; }
+      .who-block-body { padding: 32px 28px 30px; }
+      .who-media { height: 210px; }
       .concierge { padding: 20px 16px 0; }
       .concierge-card { padding: 60px 24px 64px; border-radius: 18px; }
       .accordion { margin-top: 44px; }
@@ -870,15 +897,31 @@
 
       <div class="who-blocks">
         <div class="who-block who-block-ink">
-          <h3>Importing &amp; paying out</h3>
-          <p>Sourcing goods and materials, or paying partners and vendors abroad. Get the currency you need and settle on time &mdash; without banks slowing you down.</p>
-          <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <div class="who-media">
+            <img src="assets/import-trade.jpg"
+                 alt="Worker checking incoming shipment boxes in a warehouse"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <div class="who-block-body">
+            <h3>Importing &amp; paying out</h3>
+            <p>Sourcing goods and materials, or paying partners and vendors abroad. Get the currency you need and settle on time &mdash; without banks slowing you down.</p>
+            <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
 
         <div class="who-block who-block-lime">
-          <h3>Exporting &amp; getting paid</h3>
-          <p>Earning in foreign currency and bringing it home. Convert and settle on your terms, at a rate you can actually see.</p>
-          <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <div class="who-media">
+            <img src="assets/export-trade.jpg"
+                 alt="Worker preparing goods for export at a shipping yard"
+                 loading="lazy"
+                 onerror="this.remove()" />
+          </div>
+          <div class="who-block-body">
+            <h3>Exporting &amp; getting paid</h3>
+            <p>Earning in foreign currency and bringing it home. Convert and settle on your terms, at a rate you can actually see.</p>
+            <a class="who-link" href="#quote">See how <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
         </div>
       </div>
 
