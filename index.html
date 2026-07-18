@@ -480,9 +480,9 @@
       padding: 0 40px;
       text-align: center;
       font-style: italic;
-      font-size: 17px;
+      font-size: 20px;
       line-height: 1.5;
-      color: rgba(26, 29, 26, 0.66);
+      color: var(--copper);
     }
 
     /* ============ WHO IT'S FOR ============ */
@@ -545,6 +545,34 @@
       line-height: 1.62;
       color: rgba(26, 29, 26, 0.72);
       max-width: 520px;
+    }
+
+    .who-bullets {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      list-style: none;
+      max-width: 100%;
+    }
+
+    .who-bullets li {
+      display: grid;
+      gap: 10px;
+      align-items: start;
+      font-size: 16.5px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+    .who-bullets svg {
+      width: 32px;
+      height: 32px;
+      color: var(--deep-green);
+      background: rgba(185, 230, 60, 0.36);
+      border-radius: 8px;
+      padding: 7px;
     }
 
     .who-actions {
@@ -769,6 +797,15 @@
       line-height: 1.65;
       color: rgba(26, 29, 26, 0.8);
       max-width: 520px;
+    }
+
+    .how-callout {
+      margin-top: 16px;
+      font-size: 21px;
+      font-weight: 800;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--deep-green);
     }
 
     .how-art {
@@ -1140,6 +1177,8 @@
       .who { padding: 0 16px 20px; }
       .who-card { padding: 56px 24px 52px; border-radius: 18px; }
       .who-grid { grid-template-columns: 1fr; gap: 44px; }
+      .who-bullets { grid-template-columns: 1fr; gap: 14px; }
+      .who-bullets li { grid-template-columns: 32px minmax(0, 1fr); gap: 14px; align-items: center; }
       .who-figures { margin-top: 8px; gap: 16px; }
       .who-media { height: 320px; }
       .who-media:last-child { margin-top: 0; }
@@ -1181,13 +1220,13 @@
     <div class="hero-inner">
       <div class="hero-copy">
         <h1>
-          <span class="line">Transact globally.</span>
-          <span class="line cycle-wrap">Kill the <span class="cycle-word" id="cycleWord">guesswork</span><span class="cursor" aria-hidden="true"></span></span>
+          <span class="line">Not worth your</span>
+          <span class="line cycle-wrap"><span class="cycle-word" id="cycleWord">bank&rsquo;s</span><span class="cursor" aria-hidden="true"></span> time.</span>
         </h1>
 
         <p class="hero-sub">
-          We collect, convert, and pay whoever you need, anywhere in the world.
-          One instruction, settled end to end, on your behalf.
+          That&rsquo;s the payment we handle. We collect, convert, and pay whoever you need -s
+          anywhere in the world, on your behalf.
         </p>
 
         <div class="hero-ctas">
@@ -1336,7 +1375,7 @@
           </button>
           <div class="accordion-panel">
             <div>
-              <p>Move between the world&rsquo;s major currencies - USD, EUR, GBP, CAD, CNY, and more, through licensed partners and established corridors. Compliance is built in before a single dollar moves.</p>
+              <p>Major currencies &mdash; USD, EUR, GBP, CAD, CNY and others &mdash; plus the corridors most platforms skip. If your route is unusual, that&rsquo;s the one to ask us about. Every corridor runs through licensed partners with compliance handled before anything moves.</p>
             </div>
           </div>
         </div>
@@ -1350,9 +1389,34 @@
       <div class="who-grid">
         <div class="who-copy">
           <span class="eyebrow">Built for the payments nobody else wants</span>
-          <h2><span>Small payments.</span><span>Awkward corridors.</span></h2>
-          <p class="who-lead">Banks and payment platforms are built for volume. If your transfers are modest, your corridor is uncommon, or your payment needs a conversation rather than a form, you get served last &mdash; or not at all.</p>
+          <h2><span>Small payments.</span><span> Awkward corridors.</span></h2>
+          <p class="who-lead">Banks and payment platforms are built for volume. If your transfers are modest, your corridor is uncommon, or your payment needs a conversation rather than a form, you get served last or not at all.</p>
           <p class="who-lead">Barrel handles those transactions. Paying out, collecting in, or converting currency you&rsquo;re holding in the wrong place.</p>
+          <ul class="who-bullets" aria-label="Best fit transactions">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h11M4 12h8M4 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 14l2.5 2.5L22 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Transfers too small to interest a bank&rsquo;s trade desk</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 18c4-8 12-8 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 6c4 8 12 8 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Corridors the major platforms don&rsquo;t cover</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 11a4 4 0 1 1 8 0v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 20c1.2-3 3.5-4.5 6-4.5s4.8 1.5 6 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M17 8h3v6h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Payments that need a person, not a portal</span>
+            </li>
+          </ul>
           <div class="who-actions">
             <a class="btn btn-green" href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Learn more</a>
           </div>
@@ -1390,7 +1454,7 @@
           <div class="stats-row">
             <div class="stat stat-green reveal">
               <span class="stat-number" data-count="30" data-suffix="%">30%</span>
-              <p class="stat-label"><strong>fewer</strong> correspondent banking relationships connect the global payment system than a decade ago &mdash; smaller markets cut first for lacking the volume to be profitable <a class="stat-cite" href="https://www.worldbank.org/en/news/press-release/2024/09/06/world-bank-works-to-ensure-pacific-island-countries-stay-connected-to-global-financial-system" target="_blank" rel="noopener" aria-label="Source: World Bank" title="Source: World Bank"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></a></p>
+              <p class="stat-label"><strong>fewer</strong> correspondent banking relationships connect the global payment system than a decade ago, smaller markets cut first for lacking the volume to be profitable <a class="stat-cite" href="https://www.worldbank.org/en/news/press-release/2024/09/06/world-bank-works-to-ensure-pacific-island-countries-stay-connected-to-global-financial-system" target="_blank" rel="noopener" aria-label="Source: World Bank" title="Source: World Bank"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></a></p>
             </div>
 
             <div class="stat stat-copper reveal">
@@ -1417,6 +1481,7 @@
         <p class="lead">
           You bring the transaction - we handle sourcing, settlement, and proof.
         </p>
+        <p class="how-callout">From modest transfers upward.</p>
       </div>
 
       <div class="accordion steps">
@@ -1590,12 +1655,12 @@
   <script>
     (function () {
       var el = document.getElementById("cycleWord");
-      var words = ["guesswork", "bank fees", "bad rates", "the wait"];
+      var words = ["bank's", "fintech's", "payment app's"];
       var TYPE_MS = 95;
       var DELETE_MS = 45;
       var PAUSE_MS = 1500;
 
-      // Respect reduced motion: keep static "guesswork" and stop the cursor blink.
+      // Respect reduced motion: keep static "bank's" and stop the cursor blink.
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         el.textContent = words[0];
         var cursor = document.querySelector(".cursor");
