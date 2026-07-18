@@ -501,9 +501,19 @@
 
     .who-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+      grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr);
       gap: 64px;
       align-items: center;
+    }
+
+    .who .eyebrow {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
     }
 
     .who h2 {
@@ -513,7 +523,12 @@
       line-height: 1.04;
       letter-spacing: -0.015em;
       color: var(--ink);
-      max-width: 9ch;
+      max-width: none;
+    }
+
+    .who h2 span {
+      display: block;
+      white-space: nowrap;
     }
 
     .who-subtitle {
@@ -580,7 +595,7 @@
         radial-gradient(800px 400px at 50% 120%, rgba(184, 122, 75, 0.08), transparent 60%),
         var(--paper);
       border-radius: 24px;
-      padding: 88px 64px 84px;
+      padding: 60px 64px 56px;
     }
 
     /* stats column left, headline block right — like the reference */
@@ -661,15 +676,36 @@
       max-width: 300px;
     }
 
+    .stat-cite {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: super;
+      width: 20px;
+      height: 20px;
+      margin-left: 4px;
+      border-radius: 50%;
+      color: rgba(26, 29, 26, 0.55);
+      background: rgba(26, 29, 26, 0.06);
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .stat-cite:hover {
+      color: #fff;
+      background: var(--deep-green);
+    }
+
+    .stat-copper .stat-cite:hover { background: var(--copper); }
+
     /* big bold closing statement, bottom-left like the reference */
     .shift-closing {
-      margin-top: 88px;
+      margin-top: 49px;
       font-size: clamp(32px, 3.6vw, 48px);
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.15;
       color: var(--ink);
-      max-width: 640px;
+      max-width: none;
     }
 
     /* fade-up on scroll into view */
@@ -1135,7 +1171,7 @@
         <a href="#what-we-do">What we do</a>
         <a href="#who-its-for">Who it&rsquo;s for</a>
         <a href="#how-it-works">How it works</a>
-        <a class="btn btn-lime" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
+        <a class="btn btn-lime" href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Get a Rate</a>
       </nav>
     </div>
   </header>
@@ -1155,7 +1191,7 @@
         </p>
 
         <div class="hero-ctas">
-          <a class="btn btn-lime" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
+          <a class="btn btn-lime" href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Get a Rate</a>
         </div>
         <p class="cta-microcopy">Send us your amount, get a rate back - no obligation.</p>
       </div>
@@ -1264,7 +1300,7 @@
           </button>
           <div class="accordion-panel">
             <div>
-              <p>Yes. Barrel operates through a Canadian money services business registered with FINTRAC, Canada&rsquo;s financial-crimes regulator. Every transaction runs through that regulated entity with a full paper trail, not an individual&rsquo;s account.</p>
+              <p>Yes. Barrel operates through a Canadian money services business registered with FINTRAC (MSB registration C10001493), independently verifiable on FINTRAC&rsquo;s public registry. Every transaction runs through that registered entity with a full paper trail &mdash; not an individual&rsquo;s account.</p>
             </div>
           </div>
         </div>
@@ -1313,11 +1349,12 @@
     <div class="who-card">
       <div class="who-grid">
         <div class="who-copy">
-          <h2>Built for global trade</h2>
-          <p class="who-subtitle">One infrastructure. Both directions.</p>
-          <p class="who-lead">Pay overseas suppliers, receive international customer payments, and manage the currencies your business depends on. Whether you are sourcing goods abroad or selling into new markets, Barrel helps you move and settle money across borders.</p>
+          <span class="eyebrow">Built for the payments nobody else wants</span>
+          <h2><span>Small payments.</span><span>Awkward corridors.</span></h2>
+          <p class="who-lead">Banks and payment platforms are built for volume. If your transfers are modest, your corridor is uncommon, or your payment needs a conversation rather than a form, you get served last &mdash; or not at all.</p>
+          <p class="who-lead">Barrel handles those transactions. Paying out, collecting in, or converting currency you&rsquo;re holding in the wrong place.</p>
           <div class="who-actions">
-            <a class="btn btn-green" href="#quote">Learn more</a>
+            <a class="btn btn-green" href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Learn more</a>
           </div>
         </div>
 
@@ -1344,27 +1381,27 @@
     <div class="shift-card">
       <div class="shift-grid">
         <div class="shift-head">
-          <span class="eyebrow">The Shift</span>
-          <h2>Cross-border payments are broken for growing businesses.</h2>
-          <p class="lead">Fees stack up, settlement drags on, and the market keeps growing anyway. The infrastructure hasn&rsquo;t caught up, that&rsquo;s the shift Barrel is built for.</p>
+          <span class="eyebrow">The Access Gap</span>
+          <h2>Small businesses trade globally. Nobody built the rails for them.</h2>
+          <p class="lead">The banking connections behind international payments are disappearing and the ones that remain are built for volume most businesses will never have. Smaller transfers pay more, wait longer, and get served last.</p>
         </div>
 
         <div class="shift-stats-col">
           <div class="stats-row">
             <div class="stat stat-green reveal">
-              <span class="stat-number" data-count="8" data-suffix="%">8%</span>
-              <p class="stat-label">lost on the average cross-border transaction, more than double the global benchmark</p>
+              <span class="stat-number" data-count="30" data-suffix="%">30%</span>
+              <p class="stat-label"><strong>fewer</strong> correspondent banking relationships connect the global payment system than a decade ago &mdash; smaller markets cut first for lacking the volume to be profitable <a class="stat-cite" href="https://www.worldbank.org/en/news/press-release/2024/09/06/world-bank-works-to-ensure-pacific-island-countries-stay-connected-to-global-financial-system" target="_blank" rel="noopener" aria-label="Source: World Bank" title="Source: World Bank"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></a></p>
             </div>
 
             <div class="stat stat-copper reveal">
-              <span class="stat-number" data-count="300" data-prefix="$" data-suffix="B+">$300B+</span>
-              <p class="stat-label">in projected cross-border B2B volume by 2033, a market moving without the right infrastructure</p>
+              <span class="stat-number" data-count="13" data-suffix="&times;">13&times;</span>
+              <p class="stat-label"><strong>more</strong> charged on the smallest cross-border transfers than the largest, in receiver-side fees alone <a class="stat-cite" href="https://www.fsb.org/uploads/P091025-1.pdf" target="_blank" rel="noopener" aria-label="Source: Financial Stability Board" title="Source: Financial Stability Board"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></a></p>
             </div>
           </div>
-
-          <p class="shift-closing reveal">Barrel exists to fix that.</p>
         </div>
       </div>
+
+      <p class="shift-closing reveal">Barrel exists for the payments everyone else won&rsquo;t bother with.</p>
     </div>
   </section>
 
@@ -1516,7 +1553,7 @@
       <span class="eyebrow">Connect with us</span>
       <h2>Move your money globally - without the wait, the guesswork, or the chase.</h2>
       <div class="final-cta-actions">
-        <a class="btn btn-green" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
+        <a class="btn btn-green" href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Get a Rate</a>
       </div>
       <p class="cta-microcopy">Send us your amount, get a rate back - no obligation.</p>
     </div>
@@ -1530,11 +1567,11 @@
           <a href="#what-we-do">What we do</a>
           <a href="#who-its-for">Who it&rsquo;s for</a>
           <a href="#how-it-works">How it works</a>
-          <a href="https://wa.me/?text=Hi%2C%20I%27d%20like%20a%20rate%20for%E2%80%A6" target="_blank" rel="noopener">Get a Rate</a>
+          <a href="https://wa.me/15877272124?text=Hi%20Barrel%20%E2%80%94%20I'd%20like%20a%20rate.%0A%0ASending%3A%20%0ATo%3A%20%0AFor%3A%20" target="_blank" rel="noopener">Get a Rate</a>
         </nav>
       </div>
       <p class="footer-legal">
-        Barrel Technologies operates through a Canadian MSB registered with FINTRAC.
+        Barrel Technologies operates through a Canadian money services business registered with FINTRAC &mdash; MSB registration C10001493.
         Figures cited reflect industry data on cross-border payments and are
         provided for context. Barrel is a service for moving foreign currency;
         it is not a bank.
